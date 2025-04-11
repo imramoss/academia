@@ -160,34 +160,67 @@ body {
   color: white;
 }
 
-/* Modal perfil */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 10;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
+/* Página de perfil */
+.profile-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.modal-content {
-  background: white;
-  padding: 20px;
-  width: 300px;
-  border-radius: 10px;
+.profile-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #111827;
 }
 
-.modal-content h2 {
-  margin-bottom: 15px;
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.modal-content input {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 8px;
+.profile-form label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.profile-form input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9fafb;
+}
+
+.profile-form button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 12px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-form button:hover {
+  background-color: #2563eb;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .profile-container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .profile-container h2 {
+    font-size: 1.5rem;
+  }
 }
 
 /* Carrinho */
