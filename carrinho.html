@@ -1,11 +1,20 @@
-<!-- Carrinho -->
-<section class="cart" id="carrinho">
-    <h2>Seu Carrinho</h2>
-    <div class="cart-items" id="itens-carrinho">
-      <!-- Itens do carrinho aqui -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrinho - FitStyle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="cart-page">
+    <h1>Seu Carrinho</h1>
+    <div class="cart-items">
+      <!-- Aqui você pode carregar os itens via JS futuramente -->
+      <p>Seu carrinho está vazio.</p>
     </div>
     <div class="cart-actions">
-      <button onclick="pagar()">Pagar</button>
+      <button>Pagar</button>
       <select>
         <option>Cartão de crédito</option>
         <option>Boleto</option>
@@ -14,6 +23,5 @@
       <input type="text" placeholder="Calcular frete">
     </div>
   </section>
-
 </body>
 </html>
