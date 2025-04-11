@@ -383,4 +383,24 @@ body {
 .whatsapp-button:hover {
   background-color: #1ebe5d;
 }
+/* Upload de imagem de perfil */
+.profile-pic-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #3b82f6;
+  margin-bottom: 10px;
+}
+
+#imgUpload {
+  font-size: 0.9rem;
+}
 

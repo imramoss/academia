@@ -11,13 +11,19 @@
 
   <!-- Barra Superior -->
   <div class="top-bar">
-    <span><a href="produtos.html" class="voltar">← Voltar</a></span>
+    <span><a href="index.html" class="voltar">← Voltar</a></span>
     <span class="logo-text">FitStyle</span>
   </div>
 
   <!-- Perfil do Usuário -->
   <section class="profile-container">
     <h2>👤 Meu Perfil</h2>
+
+    <!-- Imagem de perfil -->
+    <div class="profile-pic-wrapper">
+      <img id="preview" src="img/default-profile.png" alt="Imagem de perfil" class="profile-pic"/>
+      <input type="file" id="imgUpload" accept="image/*"/>
+    </div>
 
     <form class="profile-form">
       <label for="nome">Nome completo</label>
