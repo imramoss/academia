@@ -8,25 +8,34 @@
   <script defer src="script.js"></script>
 </head>
 <body>
+
+  <!-- Barra Superior -->
   <div class="top-bar">
-    <span><a href="index.html" style="color: white; text-decoration: none;">← Voltar</a></span>
-    <span>FitStyle</span>
+    <span><a href="index.html" class="voltar">← Voltar</a></span>
+    <span class="logo-text">FitStyle</span>
   </div>
 
+  <!-- Seção do Carrinho -->
   <section class="cart">
-    <h2>Seu Carrinho</h2>
+    <h2>🛒 Seu Carrinho</h2>
     <div class="cart-items" id="itens-carrinho">
       <p>Nenhum item no carrinho ainda.</p>
     </div>
+
+    <div class="cart-summary">
+      <h3>Total: R$ 0,00</h3>
+    </div>
+
     <div class="cart-actions">
-      <button onclick="pagar()">Pagar</button>
+      <button onclick="pagar()">💳 Pagar agora</button>
       <select>
         <option>Cartão de crédito</option>
         <option>Boleto</option>
         <option>PIX</option>
       </select>
-      <input type="text" placeholder="Calcular frete">
+      <input type="text" placeholder="Digite seu CEP para calcular o frete">
     </div>
   </section>
+
 </body>
 </html>
