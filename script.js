@@ -39,17 +39,21 @@ function atualizarCarrinho() {
 }
 
 function toggleCart() {
-  const carrinhoEl = document.getElementById("carrinho");
-  carrinhoEl.style.display =
-    carrinhoEl.style.display === "none" ? "block" : "none";
-}
-
-function pagar() {
-  alert("Pagamento realizado com sucesso!");
-  carrinho = [];
-  atualizarCarrinho();
+  const cart = document.getElementById('carrinho');
+  if (cart) {
+    cart.style.display = cart.style.display === 'none' ? 'block' : 'none';
+  }
 }
 
 function verDetalhes(produto) {
-  alert("Detalhes do produto: " + produto);
+  // Redireciona para uma página de produto (ajuste com base no nome se quiser fazer isso dinâmico)
+  window.location.href = "produto.html";
+}
+
+function adicionarAoCarrinho(produto) {
+  alert(produto + " adicionado ao carrinho!");
+}
+
+function pagar() {
+  alert("Redirecionando para pagamento...");
 }
