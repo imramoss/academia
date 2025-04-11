@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitStyle - Produtos</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Barra Superior -->
+  <div class="top-bar">
+    <span>Acessibilidade</span>
+    <span>Ajuda</span>
+  </div>
+
+  <!-- Barra de Categorias -->
+  <div class="category-bar">
+    <nav>
+      <a href="#">Lançamentos</a>
+      <a href="#">Ofertas</a>
+      <a href="#">Masculino</a>
+      <a href="#">Feminino</a>
+      <a href="#">Infantil</a>
+    </nav>
+    <div class="search-section">
+      <input type="text" placeholder="Buscar produtos...">
+      <button class="search-button">🔍</button>
+    </div>
+    <div class="user-actions">
+      <button>❤️</button>
+      <button onclick="toggleCart()">🛒</button>
+      <button onclick="document.getElementById('profile-modal').style.display='block'">👤</button>
+    </div>
+  </div>
+
+  <!-- Modal de Perfil -->
+  <div id="profile-modal" class="modal">
+    <form class="modal-content">
+      <h2>Criar Conta</h2>
+      <input type="text" placeholder="Nome">
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Senha">
+      <button type="submit">Cadastrar</button>
+    </form>
+  </div>
+
+  <!-- Lista de Produtos -->
+  <section class="products">
+    <div class="product">
+      <img src="imagens/produto1.jpg" alt="Produto 1">
+      <p>Produto 1</p>
+      <button class="details-btn" onclick="verDetalhes('Produto 1')">Ver detalhes</button>
+      <button class="cart-btn" onclick="adicionarAoCarrinho('Produto 1')">Adicionar ao carrinho</button>
+    </div>
+    <!-- Repetir estrutura para mais produtos -->
+  </section>
+
+  <!-- Carrinho -->
+  <section class="cart" id="carrinho">
+    <h2>Seu Carrinho</h2>
+    <div class="cart-items" id="itens-carrinho">
+      <!-- Itens do carrinho aqui -->
+    </div>
+    <div class="cart-actions">
+      <button onclick="pagar()">Pagar</button>
+      <select>
+        <option>Cartão de crédito</option>
+        <option>Boleto</option>
+        <option>PIX</option>
+      </select>
+      <input type="text" placeholder="Calcular frete">
+    </div>
+  </section>
+
+</body>
+</html>
