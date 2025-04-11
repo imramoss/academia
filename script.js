@@ -72,3 +72,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("searchInput");
+  const searchButton = document.getElementById("searchButton");
+
+  searchButton.addEventListener("click", function () {
+    const termo = searchInput.value.trim();
+    if (termo) {
+      // Redireciona para a página de produtos com o termo como parâmetro
+      window.location.href = `produtos.html?search=${encodeURIComponent(termo)}`;
+    }
+  });
+
+  // Permite apertar Enter para buscar também
+  searchInput.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      searchButton.click();
+    }
+  });
+});
