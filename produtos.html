@@ -6,6 +6,63 @@
   <title>FitStyle - Produtos</title>
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
+  <style>
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .product {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .product h3 {
+      margin: 0.8rem 0 0.3rem;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .product p {
+      font-size: 0.9rem;
+      color: #666;
+      margin: 0.2rem 0;
+    }
+
+    .product button {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .product button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
   <!-- Barra Superior -->
@@ -17,7 +74,7 @@
   <!-- Barra de Categorias -->
   <div class="category-bar">
     <nav>
-      <a href="#">Lçamentos</a>
+      <a href="#">Lançamentos</a>
       <a href="#">Ofertas</a>
       <a href="#">Masculino</a>
       <a href="#">Feminino</a>
@@ -27,7 +84,6 @@
       <input type="text" id="searchInput" placeholder="Buscar produtos...">
       <button id="searchButton" class="search-button">🔍</button>
     </div>
-
     <div class="user-actions">
       <button>❤️</button>
       <button onclick="window.location.href='carrinho.html'">🛒</button>
@@ -49,11 +105,11 @@
       <img src="imgprodutos/03607_1753_detalhe.webp" alt="Top Bege">
       <h3 class="produto-nome">Top Bege</h3>
       <p class="produto-categoria">Feminino</p>
-      <p class="produto-descricao">Top com alta sustentção para treino.</p>
+      <p class="produto-descricao">Top com alta sustentação para treino.</p>
       <button class="details-btn" onclick="verDetalhes('Top Bege')">Ver detalhes</button>
       <button class="cart-btn" onclick="adicionarAoCarrinho('Top Bege')">Adicionar ao carrinho</button>
     </div>
-    <!-- Adicione as mesmas classes aos outros produtos -->
+    <!-- Adicione os outros produtos com a mesma estrutura -->
   </section>
 
   <script>
