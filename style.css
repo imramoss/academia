@@ -403,4 +403,8 @@ body {
 #imgUpload {
   font-size: 0.9rem;
 }
+.produto {
+  display: block; /* ou flex/grid, dependendo do layout */
+  margin: 10px;
+}
 

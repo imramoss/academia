@@ -92,3 +92,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+document.addEventListener("DOMContentLoaded", function () {
+  const params = new URLSearchParams(window.location.search);
+  const termoBusca = params.get("search");
+
+  if (termoBusca) {
+    const termoNormalizado = termoBusca.toLowerCase();
+    const produtos = document.querySelectorAll(".produto");
+
+    produtos.forEach(produto => {
+      const nome = produto.querySelector(".produto-nome").textContent.toLowerCase();
+      const categoria = produto.querySelector(".produto-categoria").textContent.toLowerCase();
+      const descricao = produto.querySelector(".produto-descricao").textContent.toLowerCase();
+
+      const corresponde = nome.includes(termoNormalizado) ||
+                          categoria.includes(termoNormalizado) ||
+                          descricao.includes(termoNormalizado);
+
+      produto.style.display = corresponde ? "block" : "none";
+    });
+  }
+});
