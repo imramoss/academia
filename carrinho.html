@@ -3,18 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Carrinho - FitStyle</title>
+  <title>Seu Carrinho - FitStyle</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <section class="cart-page">
-    <h1>Seu Carrinho</h1>
-    <div class="cart-items">
-      <!-- Aqui você pode carregar os itens via JS futuramente -->
-      <p>Seu carrinho está vazio.</p>
+  <div class="top-bar">
+    <span><a href="index.html" style="color: white; text-decoration: none;">← Voltar</a></span>
+    <span>FitStyle</span>
+  </div>
+
+  <section class="cart">
+    <h2>Seu Carrinho</h2>
+    <div class="cart-items" id="itens-carrinho">
+      <p>Nenhum item no carrinho ainda.</p>
     </div>
     <div class="cart-actions">
-      <button>Pagar</button>
+      <button onclick="pagar()">Pagar</button>
       <select>
         <option>Cartão de crédito</option>
         <option>Boleto</option>
