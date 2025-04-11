@@ -2,25 +2,34 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Detalhes do Produto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitStyle - Produtos</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <section class="product-detail">
-    <img src="imgprodutos/02007-1_981_detalhe.webp" alt="Calça Preta">
-    <div class="info">
-      <h1>Calça Preta</h1>
-      <p>Descrição: Calça de treino preta, tecido leve e confortável, ideal para atividades físicas.</p>
-      <p><strong>Preço:</strong> R$ 129,90</p>
-      <a href="https://wa.me/SEUNUMERO" class="btn">Comprar no WhatsApp</a>
+  <!-- Barra Superior -->
+  <div class="top-bar">
+    <span>Acessibilidade</span>
+    <span>Ajuda</span>
+  </div>
+
+  <!-- Barra de Categorias -->
+  <div class="category-bar">
+    <nav>
+      <a href="#">Lançamentos</a>
+      <a href="#">Ofertas</a>
+      <a href="#">Masculino</a>
+      <a href="#">Feminino</a>
+      <a href="#">Infantil</a>
+    </nav>
+    <div class="search-section">
+      <input type="text" placeholder="Buscar produtos...">
+      <button class="search-button">🔍</button>
     </div>
-  </section>
-  <button class="details-btn" onclick="window.location.href='produto.html'">Ver detalhes</button>
-  <!-- Carrinho -->
-  <button onclick="window.location.href='carrinho.html'">🛒</button>
-  
-  <!-- Perfil -->
-  <button onclick="window.location.href='perfil.html'">👤</button>
-</body>
-</html>
+    <div class="user-actions">
+      <button>❤️</button>
+      <button onclick="toggleCart()">🛒</button>
+      <button onclick="document.getElementById('profile-modal').style.display='block'">👤</button>
+    </div>
+  </div>
