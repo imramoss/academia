@@ -2,136 +2,26 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FitStyle - Produtos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalhes do Produto</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- Barra Superior -->
-  <div class="top-bar">
-    <span>Acessibilidade</span>
-    <span>Ajuda</span>
-  </div>
+  <section class="product-detail">
+    <img src="imgprodutos/02007-1_981_detalhe.webp" alt="Calça Preta">
+    <div class="info">
+      <h1>Calça Preta</h1>
+      <p>Descrição: Calça de treino preta, tecido leve e confortável, ideal para atividades físicas.</p>
+      <p><strong>Preço:</strong> R$ 129,90</p>
+      <a href="https://wa.me/SEUNUMERO" class="btn">Comprar no WhatsApp</a>
+    </div>
+    <button class="details-btn" onclick="window.location.href='produto.html'">Ver detalhes</button>
+<!-- Carrinho -->
+<button onclick="window.location.href='carrinho.html'">🛒</button>
 
-  <!-- Barra de Categorias -->
-  <div class="category-bar">
-    <nav>
-      <a href="#">Lançamentos</a>
-      <a href="#">Ofertas</a>
-      <a href="#">Masculino</a>
-      <a href="#">Feminino</a>
-      <a href="#">Infantil</a>
-    </nav>
-    <div class="search-section">
-      <input type="text" placeholder="Buscar produtos...">
-      <button class="search-button">🔍</button>
-    </div>
-    <div class="user-actions">
-      <button>❤️</button>
-      <button onclick="toggleCart()">🛒</button>
-      <button onclick="document.getElementById('profile-modal').style.display='block'">👤</button>
-    </div>
-  </div>
+<!-- Perfil -->
+<button onclick="window.location.href='perfil.html'">👤</button>
 
-  <!-- Modal de Perfil -->
-  <div id="profile-modal" class="modal">
-    <form class="modal-content">
-      <h2>Criar Conta</h2>
-      <input type="text" placeholder="Nome">
-      <input type="email" placeholder="Email">
-      <input type="password" placeholder="Senha">
-      <button type="submit">Cadastrar</button>
-    </form>
-  </div>
-
-  <!-- Lista de Produtos -->
-  <section class="products">
-    <div class="product">
-      <img src="imgprodutos/02007-1_981_detalhe.webp" alt="Produto 1">
-      <p>Calça Preta</p>
-      <button class="details-btn" onclick="verDetalhes('Produto 1')">Ver detalhes</button>
-      <button class="cart-btn" onclick="adicionarAoCarrinho('Produto 1')">Adicionar ao carrinho</button>
-    </div>
-    <div class="product">
-        <img src="imgprodutos/03607_1753_detalhe.webp" alt="Produto 1">
-        <p>Top Bege</p>
-        <button class="details-btn" onclick="verDetalhes('Produto 1')">Ver detalhes</button>
-        <button class="cart-btn" onclick="adicionarAoCarrinho('Produto 1')">Adicionar ao carrinho</button>
-      </div>
-      <div class="product">
-        <img src="imgprodutos/05162-I_2314_detalhe.webp" alt="Produto 1">
-        <p>Calção Azul</p>
-        <button class="details-btn" onclick="verDetalhes('Produto 1')">Ver detalhes</button>
-        <button class="cart-btn" onclick="adicionarAoCarrinho('Produto 1')">Adicionar ao carrinho</button>
-      </div>
-      <div class="product">
-        <img src="imgprodutos/13219-I_2333_detalhe.webp" alt="Produto 1">
-        <p>Blusa Azul</p>
-        <button class="details-btn" onclick="verDetalhes('Produto 1')">Ver detalhes</button>
-        <button class="cart-btn" onclick="adicionarAoCarrinho('Produto 1')">Adicionar ao carrinho</button>
-      </div>
-      <div class="product">
-        <img src="imgprodutos/15344-I_1478_detalhe.webp" alt="Produto 1">
-        <p>Jaqueta Branca</p>
-        <button class="details-btn" onclick="verDetalhes('Produto 1')">Ver detalhes</button>
-        <button class="cart-btn" onclick="adicionarAoCarrinho('Produto 1')">Adicionar ao carrinho</button>
-      </div>
-      <div class="product">
-        <img src="imgprodutos/19301_2262_detalhe.webp" alt="Produto 1">
-        <p>Camiseta Vinho</p>
-        <button class="details-btn" onclick="verDetalhes('Produto 1')">Ver detalhes</button>
-        <button class="cart-btn" onclick="adicionarAoCarrinho('Produto 1')">Adicionar ao carrinho</button>
-      </div>
-      <div class="product">
-        <img src="imgprodutos/02044_1105_detalhe.webp" alt="Produto 1">
-        <p>Calça Bordô</p>
-        <button class="details-btn" onclick="verDetalhes('Produto 1')">Ver detalhes</button>
-        <button class="cart-btn" onclick="adicionarAoCarrinho('Produto 1')">Adicionar ao carrinho</button>
-      </div>
-      <div class="product">
-        <img src="imgprodutos/05159_2171_detalhe.webp" alt="Produto 1">
-        <p>Calção Verde </p>
-        <button class="details-btn" onclick="verDetalhes('Produto 1')">Ver detalhes</button>
-        <button class="cart-btn" onclick="adicionarAoCarrinho('Produto 1')">Adicionar ao carrinho</button>
-      </div>
-      <div class="product">
-        <img src="imgprodutos/08450-1_2291_detalhe.webp" alt="Produto 1">
-        <p>Calça Verde Escuro</p>
-        <button class="details-btn" onclick="verDetalhes('Produto 1')">Ver detalhes</button>
-        <button class="cart-btn" onclick="adicionarAoCarrinho('Produto 1')">Adicionar ao carrinho</button>
-      </div>
-      <div class="product">
-        <img src="imgprodutos/15429-I_2320_detalhe.webp" alt="Produto 1">
-        <p>Jaqueta Bordô</p>
-        <button class="details-btn" onclick="verDetalhes('Produto 1')">Ver detalhes</button>
-        <button class="cart-btn" onclick="adicionarAoCarrinho('Produto 1')">Adicionar ao carrinho</button>
-      </div>
-      <div class="product">
-      <img src="imgprodutos/12563_1319_detalhe.webp" alt="Produto 1">
-      <p>Camiseta Verde</p>
-      <button class="details-btn" onclick="verDetalhes('Produto 1')">Ver detalhes</button>
-      <button class="cart-btn" onclick="adicionarAoCarrinho('Produto 1')">Adicionar ao carrinho</button>
-    </div>
-    <!-- Repetir estrutura para mais produtos -->
   </section>
-
-  <!-- Carrinho -->
-  <section class="cart" id="carrinho">
-    <h2>Seu Carrinho</h2>
-    <div class="cart-items" id="itens-carrinho">
-      <!-- Itens do carrinho aqui -->
-    </div>
-    <div class="cart-actions">
-      <button onclick="pagar()">Pagar</button>
-      <select>
-        <option>Cartão de crédito</option>
-        <option>Boleto</option>
-        <option>PIX</option>
-      </select>
-      <input type="text" placeholder="Calcular frete">
-    </div>
-  </section>
-
 </body>
 </html>
