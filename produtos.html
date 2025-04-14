@@ -1,157 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FitStyle - Produtos</title>
+  <title>Produtos - FitStyle</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
-  <style>
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
-    }
-
-    .product {
-      background-color: #fff;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-      transition: transform 0.2s ease;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-    }
-
-    .product img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-
-    .product h3 {
-      margin: 0.8rem 0 0.3rem;
-      font-size: 1.1rem;
-      color: #333;
-    }
-
-    .product p {
-      font-size: 0.9rem;
-      color: #666;
-      margin: 0.2rem 0;
-    }
-
-    .product button {
-      margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 8px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-
-    .product button:hover {
-      background-color: #0056b3;
-    }
-  </style>
 </head>
 <body>
-  <!-- Barra Superior -->
-  <div class="top-bar">
+  <nav class="top-bar">
     <span>Acessibilidade</span>
     <span>Ajuda</span>
-  </div>
+  </nav>
+  <nav class="second-bar">
+    <span>Lançamentos</span>
+    <span>Ofertas</span>
+    <span>Masculino</span>
+    <span>Feminino</span>
+    <span>Infantil</span>
+    <div class="search-area">
+      <input type="text" id="searchInput" placeholder="Buscar produto...">
+      <button id="searchButton">🔍</button>
+    </div>
+    <button onclick="window.location.href='carrinho.html'">🛒</button>
+    <button onclick="window.location.href='perfil.html'">👤</button>
+  </nav>
 
-  <!-- Barra de Categorias -->
-  <div class="category-bar">
-    <nav>
-      <a href="#">Lançamentos</a>
-      <a href="#">Ofertas</a>
-      <a href="#">Masculino</a>
-      <a href="#">Feminino</a>
-      <a href="#">Infantil</a>
-    </nav>
-    <div class="search-section">
-      <input type="text" id="searchInput" placeholder="Buscar produtos...">
-      <button id="searchButton" class="search-button">🔍</button>
+  <section class="produtos">
+    <div class="produto" id="produto-1">
+      <img src="produto1.jpg" alt="Produto 1">
+      <h3 class="produto-nome">Produto Exemplo</h3>
+      <p class="produto-descricao">Descrição breve</p>
+      <span class="produto-categoria">Fitness</span>
+      <button onclick="verDetalhes('Produto Exemplo')">Ver Detalhes</button>
+      <button onclick="adicionarAoCarrinho(1, 'Produto Exemplo', 100, 'produto1.jpg')">Adicionar ao Carrinho</button>
     </div>
-    <div class="user-actions">
-      <button>❤️</button>
-      <button onclick="window.location.href='carrinho.html'">🛒</button>
-      <button onclick="window.location.href='perfil.html'">👤</button>
+    <div class="produto" id="produto-2">
+      <img src="produto2.jpg" alt="Produto 2">
+      <h3 class="produto-nome">Produto Exemplo 2</h3>
+      <p class="produto-descricao">Descrição breve</p>
+      <span class="produto-categoria">Fitness</span>
+      <button onclick="verDetalhes('Produto Exemplo 2')">Ver Detalhes</button>
+      <button onclick="adicionarAoCarrinho(2, 'Produto Exemplo 2', 150, 'produto2.jpg')">Adicionar ao Carrinho</button>
     </div>
-  </div>
-
-  <!-- Lista de Produtos -->
-  <section class="products">
-    <div class="product">
-      <img src="imgprodutos/02007-1_981_detalhe.webp" alt="Calça Preta">
-      <h3 class="produto-nome">Calça Preta</h3>
-      <p class="produto-categoria">Feminino</p>
-      <p class="produto-descricao">Calça legging em preto, ideal para treinos intensos.</p>
-      <button class="details-btn" onclick="verDetalhes('Calça Preta')">Ver detalhes</button>
-      <button class="cart-btn" onclick="adicionarAoCarrinho('Calça Preta')">Adicionar ao carrinho</button>
-    </div>
-    <div class="product">
-      <img src="imgprodutos/03607_1753_detalhe.webp" alt="Top Bege">
-      <h3 class="produto-nome">Top Bege</h3>
-      <p class="produto-categoria">Feminino</p>
-      <p class="produto-descricao">Top com alta sustentação para treino.</p>
-      <button class="details-btn" onclick="verDetalhes('Top Bege')">Ver detalhes</button>
-      <button class="cart-btn" onclick="adicionarAoCarrinho('Top Bege')">Adicionar ao carrinho</button>
-    </div>
-    <!-- Adicione os outros produtos com a mesma estrutura -->
   </section>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const params = new URLSearchParams(window.location.search);
-      const termoBusca = params.get("search");
-
-      if (termoBusca) {
-        const termoNormalizado = termoBusca.toLowerCase();
-        const produtos = document.querySelectorAll(".product");
-
-        produtos.forEach(produto => {
-          const nome = produto.querySelector(".produto-nome").textContent.toLowerCase();
-          const categoria = produto.querySelector(".produto-categoria").textContent.toLowerCase();
-          const descricao = produto.querySelector(".produto-descricao").textContent.toLowerCase();
-
-          const corresponde = nome.includes(termoNormalizado) ||
-                              categoria.includes(termoNormalizado) ||
-                              descricao.includes(termoNormalizado);
-
-          produto.style.display = corresponde ? "block" : "none";
-        });
-      }
-
-      // Busca da barra superior
-      const searchInput = document.getElementById("searchInput");
-      const searchButton = document.getElementById("searchButton");
-
-      searchButton.addEventListener("click", function () {
-        const termo = searchInput.value.trim();
-        if (termo) {
-          window.location.href = `produtos.html?search=${encodeURIComponent(termo)}`;
-        }
-      });
-
-      searchInput.addEventListener("keypress", function (e) {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          searchButton.click();
-        }
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
