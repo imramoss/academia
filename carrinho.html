@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Carrinho - FitStyle</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Seu Carrinho</h2>
-  <div id="carrinho"></div>
-  <p id="total"></p>
+  <div class="cart-container">
+    <h1>Seu Carrinho</h1>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-summary">
+      <input type="text" id="cep" placeholder="Digite seu CEP" />
+      <button onclick="calcularFrete()">Calcular Frete</button>
+      <p id="frete">Frete: R$ 0.00</p>
+      <h3 id="total">Total: R$ 0.00</h3>
+      <button id="btn-finalizar-compra">Finalizar Compra</button>
+    </div>
+  </div>
 
-  <input type="text" id="cep" placeholder="Digite seu CEP">
-  <button id="btn-calcular-frete">Calcular Frete</button>
-  <p id="frete"></p>
-
-  <button id="btn-finalizar-compra">Finalizar Compra</button>
-
-  <script src="script.js"></script>
+  <script src="carrinho.js"></script>
 </body>
 </html>

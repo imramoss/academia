@@ -13,173 +13,82 @@ if (banners.length) setInterval(trocarBanner, 3000);
 
 trocarBanner();
 
-// Carrinho
-let carrinho = [];
+document.addEventListener('DOMContentLoaded', function () {
+  let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-function adicionarAoCarrinho(produto) {
-  carrinho.push(produto);
-  atualizarCarrinho();
-}
-
-function atualizarCarrinho() {
-  const container = document.getElementById("itens-carrinho");
-  container.innerHTML = "";
-  carrinho.forEach((item, i) => {
-    const div = document.createElement("div");
-    div.textContent = item + " ";
-    const remover = document.createElement("button");
-    remover.textContent = "Remover";
-    remover.onclick = () => {
-      carrinho.splice(i, 1);
-      atualizarCarrinho();
-    };
-    div.appendChild(remover);
-    container.appendChild(div);
-  });
-}
-
-function toggleCart() {
-  const cart = document.getElementById('carrinho');
-  if (cart) {
-    cart.style.display = cart.style.display === 'none' ? 'block' : 'none';
-  }
-}
-
-function verDetalhes(produto) {
-  // Redireciona para uma página de produto (ajuste com base no nome se quiser fazer isso dinâmico)
-  window.location.href = "produto.html";
-}
-
-function adicionarAoCarrinho(produto) {
-  alert(produto + " adicionado ao carrinho!");
-}
-
-function pagar() {
-  alert("Redirecionando para pagamento...");
-}
-document.addEventListener("DOMContentLoaded", function () {
-  const input = document.getElementById('imgUpload');
-  const preview = document.getElementById('preview');
-
-  input.addEventListener('change', function () {
-    const file = input.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        preview.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-  });
-});
-document.addEventListener("DOMContentLoaded", function () {
-  const searchInput = document.getElementById("searchInput");
-  const searchButton = document.getElementById("searchButton");
-
-  searchButton.addEventListener("click", function () {
-    const termo = searchInput.value.trim();
-    if (termo) {
-      // Redireciona para a página de produtos com o termo como parâmetro
-      window.location.href = `produtos.html?search=${encodeURIComponent(termo)}`;
-    }
-  });
-
-  // Permite apertar Enter para buscar também
-  searchInput.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      searchButton.click();
-    }
-  });
-});
-document.addEventListener("DOMContentLoaded", function () {
-  const params = new URLSearchParams(window.location.search);
-  const termoBusca = params.get("search");
-
-  if (termoBusca) {
-    const termoNormalizado = termoBusca.toLowerCase();
-    const produtos = document.querySelectorAll(".produto");
-
-    produtos.forEach(produto => {
-      const nome = produto.querySelector(".produto-nome").textContent.toLowerCase();
-      const categoria = produto.querySelector(".produto-categoria").textContent.toLowerCase();
-      const descricao = produto.querySelector(".produto-descricao").textContent.toLowerCase();
-
-      const corresponde = nome.includes(termoNormalizado) ||
-                          categoria.includes(termoNormalizado) ||
-                          descricao.includes(termoNormalizado);
-
-      produto.style.display = corresponde ? "block" : "none";
-    });
-  }
-});
-document.addEventListener('DOMContentLoaded', function() {
-  // Função para adicionar produtos ao carrinho
-  function adicionarAoCarrinho(idProduto, nomeProduto, precoProduto, imagemProduto) {
-    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-    const produto = {
-      id: idProduto,
-      nome: nomeProduto,
-      preco: precoProduto,
-      imagem: imagemProduto,
-      quantidade: 1
-    };
-
-    // Verifica se o produto já está no carrinho
-    const produtoExistente = carrinho.find(p => p.id === idProduto);
-
-    if (produtoExistente) {
-      produtoExistente.quantidade += 1; // Se sim, aumenta a quantidade
-    } else {
-      carrinho.push(produto); // Se não, adiciona o produto
-    }
-
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
-    atualizarCarrinho(); // Atualiza o carrinho na tela
-  }
-
-  // Função para remover um item do carrinho
-  function removerDoCarrinho(idProduto) {
-    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-    carrinho = carrinho.filter(produto => produto.id !== idProduto);
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
-    atualizarCarrinho(); // Atualiza o carrinho na tela
-  }
-
-  // Função para atualizar o carrinho na tela
   function atualizarCarrinho() {
-    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-    const carrinhoContainer = document.getElementById('carrinho');
-    carrinhoContainer.innerHTML = '';
+    const container = document.getElementById('cart-items');
+    container.innerHTML = '';
+    let total = 0;
 
     if (carrinho.length === 0) {
-      carrinhoContainer.innerHTML = 'Seu carrinho está vazio.';
+      container.innerHTML = '<p>Seu carrinho está vazio.</p>';
       return;
     }
 
-    let total = 0;
-    carrinho.forEach(item => {
-      const itemCarrinho = document.createElement('div');
-      itemCarrinho.classList.add('item-carrinho');
-      
-      itemCarrinho.innerHTML = `
-        <img src="${item.imagem}" class="produto-img" alt="${item.nome}">
+    carrinho.forEach((produto, i) => {
+      const div = document.createElement('div');
+      div.classList.add('item-carrinho');
+
+      div.innerHTML = `
+        <img src="${produto.imagem}" alt="${produto.nome}">
         <div class="detalhes-produto">
-          <h4>${item.nome}</h4>
-          <p>R$ ${item.preco.toFixed(2)}</p>
-          <p>Quantidade: ${item.quantidade}</p>
+          <h4>${produto.nome}</h4>
+          <p>R$ ${produto.preco.toFixed(2)}</p>
+          <input type="number" min="1" value="${produto.quantidade}" data-index="${i}" class="quantidade">
         </div>
-        <button onclick="removerDoCarrinho(${item.id})">Remover</button>
+        <button class="remover" data-index="${i}">Remover</button>
       `;
 
-      carrinhoContainer.appendChild(itemCarrinho);
-      total += item.preco * item.quantidade;
+      container.appendChild(div);
+      total += produto.preco * produto.quantidade;
     });
+
+    document.getElementById('total').textContent = `Total: R$ ${total.toFixed(2)}`;
+  }
+
+  document.getElementById('cart-items').addEventListener('change', function (e) {
+    if (e.target.classList.contains('quantidade')) {
+      const i = e.target.dataset.index;
+      carrinho[i].quantidade = parseInt(e.target.value);
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+      atualizarCarrinho();
+    }
+  });
+
+  document.getElementById('cart-items').addEventListener('click', function (e) {
+    if (e.target.classList.contains('remover')) {
+      const i = e.target.dataset.index;
+      carrinho.splice(i, 1);
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+      atualizarCarrinho();
+    }
+  });
+
+  document.getElementById('btn-finalizar-compra').addEventListener('click', function () {
+    if (carrinho.length === 0) return alert('Carrinho vazio!');
+    const total = carrinho.reduce((soma, p) => soma + p.preco * p.quantidade, 0);
+    alert(`Compra finalizada! Total: R$ ${total.toFixed(2)}`);
+    localStorage.removeItem('carrinho');
+    carrinho = [];
+    atualizarCarrinho();
+  });
+
+  window.calcularFrete = function () {
+    const cep = document.getElementById('cep').value;
+    if (cep.length !== 8) return alert("CEP inválido.");
+    const frete = (Math.random() * 30 + 10).toFixed(2);
+    document.getElementById('frete').textContent = `Frete: R$ ${frete}`;
+  };
+
+  atualizarCarrinho();
+});
+
 
     // Exibe o valor total no carrinho
     const totalContainer = document.getElementById('total');
     totalContainer.textContent = `Total: R$ ${total.toFixed(2)}`;
-  }
+
 
   // Função para finalizar compra (simulação)
   function finalizarCompra() {
